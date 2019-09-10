@@ -1,0 +1,4 @@
+const disclaimerMessage = ` The information contained in this communication is confidential, may be privileged and is intended for the exclusive use of the above named addressee(s). If you are not the intended recipient(s), you are expressly prohibited from copying, distributing, disseminating, or in any other way using any information contained within this communication. If you have received this communication in error please contact the sender by telephone or by response via mail. We have taken precautions to minimize the risk of transmitting software viruses, but we advise you to carry out your own virus checks on any attachment to this message. We cannot accept liability for any loss or damage caused by software virus. <br>
+Located At: 131 Heartland Boulevard, Edgewood, New York, U.S Phone:866-282-4729 `
+
+exports.unsubscribeMaterialRemoved = ()
