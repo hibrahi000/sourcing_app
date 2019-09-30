@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ABH Sourcing Application</title>
+    <title>Corporate Sourcing Application</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>= title </h1>
-    <p>Welcome to </p>
+    <% if(page === 'login') { %>
+      <%-include ./pageContent/loginPage/index.ejs %>
+    <% } %>
+    <% if(page === 'staffLogin') { %>
+      <%-include ./pageContent/staffPage/index.ejs %>
+    <% } %>
+    <% if(page === 'adminLogin') { %>
+      <%-include ./pageContent/adminPage/index.ejs %>
+    <% } %>
+    <% if(page === 'vendorLogin') { %>
+      <%-include ./pageContent/vendorPage/index.ejs %>
+    <% } %>
   </body>
 </html>

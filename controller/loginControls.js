@@ -1,6 +1,6 @@
-
+let page = 'login';
 exports.loadLoginPage = (req,res,next) => {
-    res.render('index', { title: 'Express' });
+    res.render('baseTemplate', {page});
 }
 
 exports.redirectLogin = (req,res,next) => {

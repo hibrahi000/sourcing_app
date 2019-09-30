@@ -4,37 +4,30 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const mongo = require('mongo');
+
 
 const loginRouter = require('./routes/login');
 const staffRouter = require('./routes/staff');
 const adminRouter = require('./routes/admin');
 const vendorRouter = require('./routes/vendor');
 const app = express();
+require('dotenv').config();
+const key = process.env;
 
 
 
-
-
-
-	const dbkey = require(Database_Path + 'config/keys.js');
-	mongoose
-		.connect(dbkey.mongo_connect_uri, { useNewUrlParser: true })
-		.then(() => {
-			console.log('Connected to Database.....');
-		})
-		.catch((err) => console.log(err));
-	// :: needed the following due to depreciation
-	mongoose.set('useFinAndModify', false);
-}
-if (databaseType === 'MYSQL') {
-	Database_ModelPath_Path = './database/sql/';
-}
-
-const dbFunctions = require(Database_ModelPath_Path + 'controller/dbController');
-const dbModel = require('./models/databaseSQL/staffModel');
 // ___Connect To database
-dbFunctions.dbConnect();
+mongoose
+	.connect(key.mongo_connect_uri, { useNewUrlParser: true , useUnifiedTopology: true })
+	.then(() => {
+		console.log('Connected to Database.....');
+	})
+	.catch((err) => console.log(err));
+// :: needed the following due to depreciation
+mongoose.set('useFinAndModify', false);
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
