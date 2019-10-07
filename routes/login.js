@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
 const {adminAuthenticate, staffAuthenticate} = require('../config/auth');
-const {redirectLogin, loadLoginPage} = require('../controller/loginControls');
+const {loadLogin, redirectLogin} = require('../controller/loginControls');
 
 
-router.get('/' ,redirectLogin);
+router.get('/' ,loadLogin);
 
-router.get('/Login',loadLoginPage);
+router.get('/Login',redirectLogin);
 
-router.post('/staffAuthenticate', staffAuthenticate );
+router.post('/Staff_Authenticate', staffAuthenticate );
 
-router.post('/adminAuthenticate', adminAuthenticate );
+router.post('/Admin_Authenticate', adminAuthenticate );
 
 
 

@@ -1,8 +1,32 @@
-exports.adminAuthenticate = (req, res, next) => {};
+const passport = require('passport');
+const key = process.env;
 
-exports.staffAuthenticate = (req, res, next) => {};
 
-exports.vendorAuthenticate = (req, res, next) => {};
+exports.adminAuthenticate = (req, res, next) => {
+
+};
+
+exports.staffAuthenticate = (req, res, next) => {
+	console.log('SALES Verification Begin...');
+	passport.authenticate('salesPass', (errors, staff) => {
+		if(errors) {throw errors};
+		if (staff === false) {
+			console.log('SALES Verification: FAILED');
+			req.flash('error_msg','Invalid Credentials');
+			res.redirect('/')
+		} else {
+			req.logIn(staff,(err) => {
+				if(err) { return next(err);}
+				console.log('SALES Verification: PASSED')
+				res.redirect(`/Sourcing_App`);
+			})
+		}
+	})(req, res, next);
+};
+
+exports.vendorAuthenticate = (req, res, next) => {
+
+};
 
 exports.adminIsAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {

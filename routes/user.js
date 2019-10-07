@@ -3,10 +3,12 @@ var router = express.Router();
 
 
 const {adminAuthenticate, loadAdminPage} = require('../controller/adminControls');
-const {loadUser} = require('../controller/genUserControls');
+const {refresh} = require('../controller/genUserControls');
 
 
-router.get('/')
+
+
+
 
 
 

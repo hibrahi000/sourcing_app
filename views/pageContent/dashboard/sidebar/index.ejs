@@ -1,0 +1,114 @@
+<div class="sidebar" data-color="white" data-background-color="black" data-image="/img/sidebar-1.jpg">
+  <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  _-->
+  <div class="logo">
+    <a class="simple-text text-sky logo-normal">
+      <%=user.FirstName + user.LastName  %>
+    </a>
+  </div>
+
+  <div class="sidebar-wrapper ">
+    <ul class="nav">
+      <li class="nav-item ">
+        <p class="nav-link underlineHover">
+          <i class="material-icons">contacts</i>
+          <h4 class='text-info'> <%if(user.Admin) {%>
+            Admin
+            <%} else if(user.Manager) { %>
+            Manager
+            <%} else{ %>
+            Sales
+            <%} %>
+
+          </h4>
+        </p>
+
+      </li>
+      <li class="nav-item <% if(page === 'Dashboard') { %>
+          active
+        <%}%>">
+          <a class="nav-link" href="Dashboard">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-item <% if(page === 'User_Profile') { %>
+            active
+          <%}%>">
+          <a class="nav-link"href="User_Profile">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li class="nav-item <% if(page === 'Material_List') { %>
+            active
+          <%}%>">
+          <a class="nav-link" href="Material_List">
+            <i class="material-icons">content_paste</i>
+            <p>Material List</p>
+          </a>
+        </li>
+        <li class="nav-item <% if(page === 'My_Stats') { %>
+            active
+          <%}%>">
+          <a class="nav-link" href="">
+            <i class="material-icons">blur_linear</i>
+            <p>My Stats</p>
+          </a>
+        </li>
+        <li class="nav-item <% if(page === 'Add_Material') { %>
+            active
+          <%}%>">
+          <a class="nav-link" href="Add_Material">
+            <i class="material-icons">forum</i>
+            <p>Add Material</p>
+          </a>
+        </li>
+
+        <% if(user.Admin || user.Manager) { %>
+        <!-- Admin/Manager Side Bar options -->
+       
+
+        <li class="nav-item <% if(page === 'Remove_User') { %> active <%}%>">
+          <a class="nav-link" href="Remove_User">
+            <i class="material-icons">build</i>
+            <p class='text-warning'>REMOVE USER</p>
+          </a>
+        </li>
+      
+        <li class="nav-item <% if(page === 'ADD_User') { %> active <%}%>">
+          <a class="nav-link" href="Add_User">
+            <i class="material-icons">build</i>
+            <p class='text-warning'>ADD USER</p>
+          </a>
+        </li>
+
+        <li class=" nav-item <% if(page === 'Remove Vendor') { %> active <%}%>">
+                  <a class="nav-link" href="Remove_Vendor">
+                    <i class="material-icons">group</i>
+                    <p class='text-warning'>REMOVE VENDOR</p>
+                  </a>
+        </li>
+
+        <li class="nav-item <% if(page === 'Remove_Material') { %> active <%}%>">
+        <a class="nav-link" href="Remove_Material">
+          <i class="material-icons">build</i>
+          <p class='text-warning'>REMOVE MATERIAL</p>
+        </a>
+        </li>
+
+
+      <% } %>
+      
+      <li class="nav-item active-pro">
+        <a class="nav-link" href="LogOut">
+          <i class="material-icons">lock</i>
+          <p>Log Out</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

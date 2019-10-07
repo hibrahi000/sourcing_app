@@ -4,11 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
+const sessions = require('cookie-session');
 const loginRouter = require('./routes/login');
-const staffRouter = require('./routes/staff');
-const adminRouter = require('./routes/admin');
+const userRouter = require('./routes/user');
 const vendorRouter = require('./routes/vendor');
+const passport = require('passport');
 const app = express();
 require('dotenv').config();
 const key = process.env;
@@ -16,14 +16,37 @@ const key = process.env;
 
 
 // ___Connect To database
-mongoose
-	.connect(key.mongo_connect_uri, { useNewUrlParser: true , useUnifiedTopology: true })
-	.then(() => {
-		console.log('Connected to Database.....');
+// mongoose
+// 	.connect(key.mongo_connect_uri, { useNewUrlParser: true ,  useUnifiedTopology: true })
+// 	.then(() => {
+// 		console.log('Connected to Database.....');
+// 	})
+// 	.catch((err) => console.log(err));
+// // :: needed the following due to depreciation
+// mongoose.set('useFinAndModify', false);
+
+
+
+
+// ___Setting up sessions to be use for login purposes
+app.use(
+	sessions({
+		maxAge: 1000 	* 	60	 * 	60 	* 	2,
+			   //miliSec    sec     min    hours     days
+		keys: [ key.cookieKey ]
 	})
-	.catch((err) => console.log(err));
-// :: needed the following due to depreciation
-mongoose.set('useFinAndModify', false);
+);
+
+
+// ___passport middleware
+require('./config/passport')(passport);
+app.use(passport.initialize('./config/passport.js')); // this initializes
+app.use(passport.session());
+console.log(passport.session);
+
+// app.use(express.csrf());
+// ^^this express.csrf is used for protection from looking into input values
+//We are using the global.loggedUsers to keep track of the users to reference later
 
 
 
@@ -40,9 +63,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', loginRouter);
-app.use('/Sourcing_App', staffRouter);
+app.use('/Sourcing_App', userRouter);
 app.use('/Vendor_Response', vendorRouter);
-app.use('/Admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

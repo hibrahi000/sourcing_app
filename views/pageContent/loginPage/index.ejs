@@ -13,8 +13,8 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="manager-tab" data-toggle='pill'
-                        href="#managerLogin" roll='tab' aria-controls=
-                        'managerLogin'>Manager</a>
+                        href="#adminLogin" roll='tab' aria-controls=
+                        'managerLogin'>Admin</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +30,7 @@
             <!-- Sales Login Form -->
             <form class="tab-pane fade show active" id='salesLogin'
                 role="tabpanel" aria-labelledby="sales-tab"
-                action="/User_Authenticate" method="POST">
+                action="/Staff_Authenticate" method="POST">
                 <p>SALES</p>
                 <input type="text" id="username" class="fadeIn first"
                     name="username"
@@ -41,10 +41,10 @@
             </form>
 
             <!-- Manager Login Form -->
-            <form class="tab-pane fade" id='managerLogin' role="tabpanel"
-                aria-labelledby="manager-tab" action="/Manager_Authenticate"
+            <form class="tab-pane fade" id='adminLogin' role="tabpanel"
+                aria-labelledby="admin-tab" action="/Admin_Authenticate"
                 method="POST">
-                <p>MANAGER</p>
+                <p>ADMIN</p>
                 <input type="text" id="login" class="fadeIn first"
                     name="username"
                     placeholder="" value="TestUsername" required>

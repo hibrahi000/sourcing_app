@@ -1,5 +1,5 @@
 let page = 'login';
-exports.loadLoginPage = (req,res,next) => {
+exports.loadLogin = (req,res,next) => {
     res.render('baseTemplate', {page});
 }
 
