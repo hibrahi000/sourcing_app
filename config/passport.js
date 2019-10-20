@@ -21,7 +21,7 @@ function passport(passport) {
 			}, 500);
 			setTimeout(() => {
 				console.log('------> connected and running on PORT 5000');
-				console.log('Url: localhost:5000/');
+				console.log('Url: localhost:3000/');
 			}, 700);
 			
 		})
