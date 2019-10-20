@@ -24,9 +24,10 @@ exports.staffAuthenticate = (req, res, next) => {
 	})(req, res, next);
 };
 
-exports.vendorAuthenticate = (req, res, next) => {
+//!! we dont need to authenticate the vendor as the request will make the link valid until time is done so we just need to validate the link.
+// exports.vendorAuthenticate = (req, res, next) => {
 
-};
+// }; 
 
 exports.adminIsAuthenticated = (req, res, next) => {
 	if (req.isAuthenticated()) {

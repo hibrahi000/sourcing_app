@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/');
+const {vendorIsAuthenticate} = require('../config/auth');
+
+router.get('/',);
 
 router.get('/Unsubscribe');
 

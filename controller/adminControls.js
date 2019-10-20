@@ -14,4 +14,8 @@ exports.deleteVendorFromDatabase = (req,res,next) => {
     return null;
 }
 
+exports.loadAllUsers = (req,res,next) => {
+    return null;
+}
+
 
