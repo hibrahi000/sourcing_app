@@ -1,5 +1,5 @@
 // ++ Imports
-const key = require('../config/keys');
+const key =process.env; 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 // :: Database imports
